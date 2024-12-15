@@ -29,7 +29,7 @@ if($gameID==="none"){
 <body>
 <div class="header">
 <h1>Devinette Game</h1>
-        <h2 style="color:white">Game: <?php echo $gameID ?></h2>
+        <h2 style="color:white">Game: <?php echo $_SESSION['game_id'] ?></h2>
         <div class="game-selection">
             <h5>Select Your Player</h5>
             <a href="game.php?player=player1&playerID=<?= $playerID ?>" class="btn">Player 1</a>
