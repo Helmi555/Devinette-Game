@@ -28,10 +28,13 @@ $_SESSION['game_id'] = $gameId;
 <head>
     <title>Devinet - Number Guessing Game</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <h1>Devinet Game</h1>
     <div class="container">
-        <h1>Devinet Game</h1>
+        
         <div class="game-selection">
             <h2>Select Your Player</h2>
             <a href="game.php?player=player1" class="btn">Player 1</a>
