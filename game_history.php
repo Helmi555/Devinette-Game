@@ -147,8 +147,10 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .status-ongoing {
+            text-align: center;
             background-color: #ffa500;
             color: white;
+            
         }
 
         .no-data {
