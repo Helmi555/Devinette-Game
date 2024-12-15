@@ -8,6 +8,13 @@ if (!isset($_GET['player']) || !in_array($_GET['player'], ['player1', 'player2']
 }
 
 $player = $_GET['player'];
+$playerID = $_GET['playerID'];
+
+$sql = "SELECT username FROM users WHERE id = :playerID;";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['playerID' => $playerID]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 if($player === 'player1'){
     $opponent = 'player2';
 }else{
@@ -24,13 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'ready':
                 // Mark player as ready
                 $stmt = $pdo->prepare("UPDATE game_sessions 
-                    SET {$player}_ready = TRUE, 
+                    SET {$player}_ready = TRUE,
+                        {$player}_ID=:playerID,
                         game_status = CASE 
                             WHEN {$opponentPlayer}_ready = TRUE THEN 'playing' 
                             ELSE 'waiting' 
                         END 
                     WHERE id = :gameId");
-                $stmt->execute(['gameId' => $gameId]);
+                $stmt->execute(['gameId' => $gameId, 'playerID' => $playerID]);
                 break;
 
             case 'guess':
@@ -47,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         (($guess > $secretNumber) ? 'lower' : 'correct');
 
                 // Update game state
-                $stmt = $pdo->prepare("UPDATE game_sessions 
+                $stmt = $pdo->prepare("UPDATE game_sessions
                     SET 
                         {$player}_tries = {$player}_tries + 1,
                         last_guess_{$player} = :guess,
@@ -66,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Redirect to refresh
-        header("Location: game.php?player={$player}");
+        header("Location: game.php?player={$player}&playerID={$playerID}");
         exit;
     }
 }
@@ -85,7 +93,7 @@ $game = $stmt->fetch(PDO::FETCH_ASSOC);
 </head>
 <body>
     <div class="container">
-        <h1>Devinet Game - <?php echo ucfirst($player); ?></h1>
+        <h1>Devinet Game - <?php echo $user["username"] ?></h1>
         
         <?php if ($game['game_status'] === 'waiting'): ?>
             <?php if (!$game["{$player}_ready"]): ?>
