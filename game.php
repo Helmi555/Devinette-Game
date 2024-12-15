@@ -93,7 +93,7 @@ $game = $stmt->fetch(PDO::FETCH_ASSOC);
 </head>
 <body>
     <div class="container">
-        <h1>Devinet Game - <?php echo $user["username"] ?></h1>
+        <h1>Devinet Game: <?php echo $gameId ?> as  <?php echo $user["username"] ?></h1>
         
         <?php if ($game['game_status'] === 'waiting'): ?>
             <?php if (!$game["{$player}_ready"]): ?>
@@ -170,6 +170,10 @@ $game = $stmt->fetch(PDO::FETCH_ASSOC);
                 <p>Secret Number was: <?php echo $game['secret_number']; ?></p>
             </div>
         <?php endif; ?>
+        
+        <div>
+            <a class="backUrl" href="creategame.php?&playerID=<?= $playerID ?>">Back to Home</a>
+        </div>
     </div>
 </body>
 </html>

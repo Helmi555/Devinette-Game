@@ -42,3 +42,12 @@ form input {
     align-items: center;
     margin: 0;
 }
+
+.backUrl{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: #007bff;
+    
+}

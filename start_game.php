@@ -28,7 +28,7 @@ if($gameID==="none"){
 </head>
 <body>
     <div class="container">
-        <h1>Devinet Game</h1>
+        <h1>Devinet Game: <?php echo $gameID ?></h1>
         <div class="game-selection">
             <h2>Select Your Player</h2>
             <a href="game.php?player=player1&playerID=<?= $playerID ?>" class="btn">Player 1</a>

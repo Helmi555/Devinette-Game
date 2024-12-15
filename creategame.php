@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-require 'config.php'; // Include your database connection
+require 'config.php';
 
-// Function to check if gameID exists
 function gameIDExists($pdo, $gameID) {
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM game_sessions WHERE id = ? and game_status='waiting'");
     $stmt->execute([$gameID]);
@@ -57,6 +56,7 @@ $_SESSION['game_id'] = "none";
             <input type="number" id="gameID" placeholder="Game ID:">
             <a href="#" class="btn" onclick="startGame()">Join Existing Game</a>
             <a href="start_game.php?&playerID=<?= $playerID ?>" class="btn">start new game</a>
+            <a href="game_history.php?&playerID=<?= $playerID ?>" class="btn">get your game history</a>
 
             <script>
                 function startGame() {

@@ -1,8 +1,9 @@
 <?php
 require 'config.php';
-$query = "SELECT * FROM game_sessions ORDER BY created_at DESC LIMIT 10";
+$playerID= $_GET['playerID'];
+$query = "SELECT * FROM game_sessions where player1_ID=:playerID or player2_ID=:playerID ORDER BY created_at DESC LIMIT 10";
 $stmt = $pdo->prepare($query);
-$stmt->execute();
+$stmt->execute(['playerID' => $playerID]);
 $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -176,9 +177,11 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
             100% { transform: scale(1); }
         }
     </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container1">
         <div class="header">
             <h1>Game History</h1>
         </div>
@@ -223,6 +226,9 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <p>No game history available yet</p>
                 </div>
             <?php endif; ?>
+        </div>
+        <div>
+            <a class="backUrl" href="creategame.php?&playerID=<?= $playerID ?>" style="color:white">Back to Home</a>
         </div>
     </div>
 </body>
