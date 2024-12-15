@@ -160,6 +160,6 @@ input:focus {
 }
 
 .btn-guess:active {
-    background-color: #3e8e41; 
+    background-color: #810c81; 
     transform: scale(0.95);
 }
