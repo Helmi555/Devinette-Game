@@ -83,6 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $stmt = $pdo->prepare("SELECT * FROM game_sessions WHERE id = :gameId");
 $stmt->execute(['gameId' => $gameId]);
 $game = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!$game) {
+    header("Location: creategame.php?&playerID=$playerID");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -97,7 +101,7 @@ $game = $stmt->fetch(PDO::FETCH_ASSOC);
 <div class="header">
 <h1>Devinette Game</h1>
 
-        <h2 style="color:white">Game : <?php echo $gameId ?> Player:  <?php echo $user["username"] ?></h2>
+        <h2 style="color:white">Game : <?php echo $gameId ?><br> Player:  <?php echo $user["username"] ?></h2>
         
         <?php if ($game['game_status'] === 'waiting'): ?>
             <?php if (!$game["{$player}_ready"]): ?>
@@ -107,16 +111,24 @@ $game = $stmt->fetch(PDO::FETCH_ASSOC);
                         <input style="color:white" type="hidden" name="action" value="ready">
                         <button type="submit" class="btn">I'm Ready</button>
                     </form>
-                    <p style="color:white">Waiting for the other player to be ready...</p>
+            <p style="color: white;">Waiting for the other player to be ready...</p>
+            <a class="btn2" href="creategame.php?&playerID=<?= $playerID ?>">Back to Home</a>
+
+        </div>
                 </div>
             <?php else: ?>
-                <p style="color:white">Waiting for the other player to be ready...</p>
+                <div class="waiting-indicator">
+            <p style="color: white;">Waiting for the other player to be ready...</p>
+            <div class="spinner"></div>
+        </div>
+            <a class="btn2" href="creategame.php?&playerID=<?= $playerID ?>">Back to Home</a>
+
             <?php endif; ?>
 
         <?php elseif ($game['game_status'] === 'playing'): ?>
             <?php if ($game['winner']): ?>
                 <div class="game-over">
-                    <h2 style="color:white">Game Over!</h2>
+                    <h2 style="color:purple">Game Over !</h2>
                     <p>
                         <?php 
                         if ($game['winner'] === $player) {
@@ -146,7 +158,7 @@ $game = $stmt->fetch(PDO::FETCH_ASSOC);
                     <form method="POST">
                         <input type="number" name="guess" min="1" max="100" required>
                         <input type="hidden" name="action" value="guess">
-                        <button type="submit">Guess</button>
+                        <button class="btn-guess" type="submit">Guess</button>
                     </form>
 
                     <div class="tries">
@@ -173,11 +185,10 @@ $game = $stmt->fetch(PDO::FETCH_ASSOC);
                 </p>
                 <p style="color:white">Secret Number was: <?php echo $game['secret_number']; ?></p>
             </div>
-        <?php endif; ?>
-        
-        
             <a class="btn2" href="creategame.php?&playerID=<?= $playerID ?>">Back to Home</a>
-        </div>
+
+        <?php endif; ?>
+  
     
         
     

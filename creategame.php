@@ -45,7 +45,7 @@ $_SESSION['game_id'] = "none";
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Devinet - Number Guessing Game</title>
+    <title>Devinette - Number Guessing Game</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
@@ -63,13 +63,13 @@ $_SESSION['game_id'] = "none";
         <div class="game-selection">
             <h5>Select your game</h5>
             <div class="join">
-                <input type="number" id="gameID" placeholder="Game ID:">
+                <input type="number" id="gameID" placeholder="Game ID">
                 <a href="#" class="btn" onclick="startGame()">Join Existing Game</a>
 
             </div>
             <div class="control">
-                <a href="start_game.php?&playerID=<?= $playerID ?>" class="btn">start new game</a>
-                <a href="game_history.php?&playerID=<?= $playerID ?>" class="btn">get your game history</a>
+                <a href="start_game.php?&playerID=<?= $playerID ?>" class="btn">New game</a>
+                <a href="game_history.php?&playerID=<?= $playerID ?>" class="btn">Your game history</a>
             </div>
 
             <script>

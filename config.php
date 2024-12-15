@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'devinet_game2';
+$dbname = 'devinettegame';
 $username = 'root';
 $password = '';
 

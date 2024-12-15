@@ -1,6 +1,6 @@
 <?php
 require 'config.php';
-$playerID= $_GET['playerID'];
+$playerID = isset($_GET['playerID']) ? $_GET['playerID'] : null;
 $query = "SELECT * FROM game_sessions where player1_ID=:playerID or player2_ID=:playerID ORDER BY created_at DESC LIMIT 10";
 $stmt = $pdo->prepare($query);
 $stmt->execute(['playerID' => $playerID]);
