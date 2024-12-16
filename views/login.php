@@ -33,7 +33,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <input type="text" id="username" placeholder="username">
             
             <input type="password" id="password"placeholder="password">
-            <a href="#" class="btn" onclick="login()">login</a>
+            <a href="#" class="btn" onclick="login()">Login</a>
 
             <script>
                 function login() {
@@ -54,7 +54,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
     <?php else : ?>
         <div class="game-selection">
-            <a href="creategame.php?playerID=<?php echo $user['id']; ?>" class="btn">let's start</a>
+            <a href="creategame.php?playerID=<?php echo $user['id']; ?>" class="btn">Let's start</a>
         </div>
     
     <?php endif; ?>

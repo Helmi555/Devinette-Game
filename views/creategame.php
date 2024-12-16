@@ -95,7 +95,6 @@ $_SESSION['game_id'] = "none";
         
     </div>
         </div>
-    
-       
+
 </body>
 </html>

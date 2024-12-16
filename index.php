@@ -15,7 +15,7 @@ require 'config.php';
 <h1>Devinette Game</h1>
 
             <div class="game-selection">
-            <a href="#" id="playerLink" class="btn">let's start</a>
+            <a href="#" id="playerLink" class="btn">Let's start</a>
 
             <script>
                 const username = localStorage.getItem('username');
