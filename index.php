@@ -6,7 +6,7 @@ require 'config.php';
 <html>
 <head>
     <title>Devinet - Number Guessing Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -22,10 +22,10 @@ require 'config.php';
                 
                 if (username) {
                     const link = document.getElementById('playerLink');
-                    link.href = `start_game.php?playerID=${encodeURIComponent(username)}`;
+                    link.href = `./views/start_game.php?playerID=${encodeURIComponent(username)}`;
                 } else {
                     const link = document.getElementById('playerLink');
-                    link.href = `login.php?playerID=null&password=null`;
+                    link.href = `./views/login.php?playerID=null&password=null`;
                 }
             </script>
         </div>

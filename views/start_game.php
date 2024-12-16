@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require '../config.php';
 
 
 $playerID = $_GET['playerID'];
@@ -17,14 +17,12 @@ if($gameID==="none"){
 
 
 
-// Generate a new game session with a random number
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Devinet - Number Guessing Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
 <div class="header">

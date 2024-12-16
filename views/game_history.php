@@ -1,10 +1,11 @@
 <?php
-require 'config.php';
+require '../config.php';
 $playerID = isset($_GET['playerID']) ? $_GET['playerID'] : null;
 $query = "SELECT * FROM game_sessions where player1_ID=:playerID or player2_ID=:playerID ORDER BY created_at DESC LIMIT 10";
 $stmt = $pdo->prepare($query);
 $stmt->execute(['playerID' => $playerID]);
 $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//zidha houni mb3ed
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game History - Scoreboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="game_history.css">
+    <link rel="stylesheet" href="../styles/game_history.css">
 </head>
 <body>
     <div class="container">

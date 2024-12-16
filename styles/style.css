@@ -8,7 +8,7 @@
 }
 body {
     font-family: Arial, sans-serif;
-    background: url('./assets/wallpaper.jpg') no-repeat center center fixed  ;
+    background: url('../assets/wallpaper.jpg') no-repeat center center fixed ;
     display: flex;
     flex-direction: column;
     justify-content: center;

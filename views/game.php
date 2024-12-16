@@ -1,8 +1,7 @@
 <?php
 session_start();
-require 'config.php';
+require '../config.php';
 
-// Validate player selection
 if (!isset($_GET['player']) || !in_array($_GET['player'], ['player1', 'player2'])) {
     die("Invalid player selection");
 }
@@ -23,13 +22,10 @@ if($player === 'player1'){
 $opponentPlayer = ($player === 'player1') ? 'player2' : 'player1';
 $gameId = $_SESSION['game_id'];
 
-// Handle player actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if it's a guess or ready status
     if (isset($_POST['action'])) {
         switch ($_POST['action']) {
             case 'ready':
-                // Mark player as ready
                 $stmt = $pdo->prepare("UPDATE game_sessions 
                     SET {$player}_ready = TRUE,
                         {$player}_ID=:playerID,
@@ -44,17 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'guess':
                 $guess = intval($_POST['guess']);
                 
-                // Fetch current game state
                 $stmt = $pdo->prepare("SELECT secret_number FROM game_sessions WHERE id = :gameId");
                 $stmt->execute(['gameId' => $gameId]);
                 $game = $stmt->fetch(PDO::FETCH_ASSOC);
                 $secretNumber = $game['secret_number'];
 
-                // Determine hint
                 $hint = ($guess < $secretNumber) ? 'higher' : 
                         (($guess > $secretNumber) ? 'lower' : 'correct');
 
-                // Update game state
                 $stmt = $pdo->prepare("UPDATE game_sessions
                     SET 
                         {$player}_tries = {$player}_tries + 1,
@@ -73,13 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 break;
         }
 
-        // Redirect to refresh
         header("Location: game.php?player={$player}&playerID={$playerID}");
         exit;
     }
 }
 
-// Fetch updated game state
 $stmt = $pdo->prepare("SELECT * FROM game_sessions WHERE id = :gameId");
 $stmt->execute(['gameId' => $gameId]);
 $game = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -92,7 +83,7 @@ if (!$game) {
 <html>
 <head>
     <title>Devinet - <?php echo ucfirst($player); ?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <meta http-equiv="refresh" content="5">

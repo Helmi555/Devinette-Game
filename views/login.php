@@ -1,6 +1,7 @@
 <?php
 session_start();
-require 'config.php';
+require '../config.php';
+
 
 
 $player = $_GET['playerID'];
@@ -16,7 +17,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Devinet - Number Guessing Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
