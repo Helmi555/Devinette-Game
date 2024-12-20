@@ -45,11 +45,22 @@ CREATE TABLE IF NOT EXISTS users (
     password_hash VARCHAR(255) NOT NULL
 );
 ```
-## 🖼️ Screenshots 🔵 Home Page Welcome players with an interactive and engaging interface. Home Page
+## 🖼️ Screenshots 
 
-### 🔴 Two-Player Game Mode Players guess the secret number with real-time feedback and hints. Two-Player Game
+### 🔵 Home Page
+Welcome players with an interactive and engaging interface. Home Page
+![Home Page](./images/home_page.png)
 
-### 🟢 Game History Review past games, winners, and player stats. Game History
+
+### 🔴 Two-Player Game Mode
+Players guess the secret number with real-time feedback and hints. Two-Player Game
+![Two-Player Game](./images/two_player_game.png)
+
+
+### 🟢 Game History
+Review past games, winners, and player stats. Game History
+![Game History](./images/game_history.png)
+
 
 ### 🚀 Getting Started Prerequisites PHP (v7.4 or later) MySQL A web server (e.g., Apache, Nginx, or XAMPP) Installation Clone the repository:
 
