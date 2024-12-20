@@ -45,11 +45,11 @@ CREATE TABLE IF NOT EXISTS users (
     password_hash VARCHAR(255) NOT NULL
 );
 ```
-##🖼️ Screenshots 🔵 Home Page Welcome players with an interactive and engaging interface. Home Page
+## 🖼️ Screenshots 🔵 Home Page Welcome players with an interactive and engaging interface. Home Page
 
-###🔴 Two-Player Game Mode Players guess the secret number with real-time feedback and hints. Two-Player Game
+### 🔴 Two-Player Game Mode Players guess the secret number with real-time feedback and hints. Two-Player Game
 
-###🟢 Game History Review past games, winners, and player stats. Game History
+### 🟢 Game History Review past games, winners, and player stats. Game History
 
-###🚀 Getting Started Prerequisites PHP (v7.4 or later) MySQL A web server (e.g., Apache, Nginx, or XAMPP) Installation Clone the repository:
+### 🚀 Getting Started Prerequisites PHP (v7.4 or later) MySQL A web server (e.g., Apache, Nginx, or XAMPP) Installation Clone the repository:
 
