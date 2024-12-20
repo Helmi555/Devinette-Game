@@ -170,7 +170,7 @@ if (!$game) {
                     if ($game['winner'] === $player) {
                         echo "Congratulations! You Won! 🎉";
                     } else {
-                        echo "Sorry, {$game['winner']} Won! 😢";
+                        echo "Sorry, You lost<br>{$game['winner']} Won! 😢";
                     }
                     ?>
                 </p>
