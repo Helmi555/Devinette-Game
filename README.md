@@ -15,9 +15,13 @@ A fun and interactive multiplayer guessing game developed using **HTML**, **CSS*
 - **Frontend:** HTML, CSS, JavaScript  
 - **Backend:** PHP  
 - **Database:** MySQL  
-- **Version Control:** Git and GitHub  
+- **Version Control:** Git and GitHub .
+
+
 
 ---
+
+
 
 ## 📋 Database Schema
 
